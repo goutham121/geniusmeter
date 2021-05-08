@@ -1,0 +1,112 @@
+
+     <html>
+	<head>
+		<title>
+			Testing realtime
+		</title>
+		<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+		<style>
+		body {
+			/* Set font family to Google's Roboto font */
+		    font-family: 'Roboto';font-size: 22px;
+		}
+		</style>
+	</head>
+        <!-- Set background color -->
+	<body bgcolor="#F0F8FF">
+		<center>
+		<!-- Add Fr.CRCE logo -->
+		<img src="https://i.pinimg.com/originals/12/4f/55/124f55209dacad4cffd468e2997e1dec.jpg?raw=true" style="width:125px;height:90px;">
+		</center>
+		<center>
+		<!-- Add title details  -->
+		<p><h1><b> Smart Energy Monitor </h1></b></p>
+		<p><h3>Project Mentor: DR.V.R BALAJI</h3></p>
+		<p><h4>GOUTHAM S K.GNANESWARAN T.K SREEJEETH VIJAY</h4></p>
+		</center>
+
+		<!-- Add table for dashboard display -->
+    <center>
+		<div id="autorefresh">
+			<table color="black" width="1000" height ="400" cellpadding="40" border="2">
+			<tr>
+				<th><font size="8">Active Devices</th>
+				<th><font size="8">Energy Consumed(kWh)</th>
+				<th><font size="8">Bill Amount(Rs.)</th>
+			  	<th><font size="8">Time</th>
+		  </tr>
+		  <tr>
+<th><font size="8"></th>
+<th><font size="8"></th>
+<th><font size="8"></th>
+<th><font size="8"></th>
+		  </tr>
+		</table>
+		<table color="black" width="1000" height ="400" cellpadding="40" border="2">
+			<tr>
+				<th><font size="8">Device</th>
+				<th><font size="8">Consumption</th>
+                                <th><font size="8">Efficiency</th>
+		  </tr>
+		  <tr>
+                                <td align="center"><font size="8"></td>
+                                <td align="center"><font size="8"></td>
+                                <td align="center"><font size="8"></td>
+		  </tr>
+		  <tr>
+<td align="center"><font size="8"></td>
+<td align="center"><font size="8"></td>
+<td align="center"><font size="8"></td>
+		  </tr>
+		  <tr>
+<td align="center"><font size="8"></td>
+<td align="center"><font size="8"></td>
+<td align="center"><font size="8"></td>
+		  </tr>
+                                <tr>
+<td align="center"><font size="8"></td>
+<td align="center"><font size="8"></td>
+<td align="center"><font size="8"></td>
+		  </tr>
+		</table>
+		<table color="black" width="1000" height ="400" cellpadding="40" border="2">
+			<tr>
+				<th><font size="8">Appliances</th>
+				<th><font size="8">Percentage</th>
+		  </tr>
+		  <tr>
+				<td align="center"><font size="8">Lighting</td>
+<td align="center"><font size="8"></td>
+		  </tr>
+		  <tr>
+				<td align="center"><font size="8">Home Tools</td>
+<td align="center"><font size="8"></td>
+		  </tr>
+
+		</table>
+		</div>
+	 </center>
+	 	<!-- Autorefresh data script-->
+		<script>
+			function dealWithData(jsonData)	{
+				$("#tag1").html(jsonData["current1"]);
+				$("#tag2").html(jsonData["killowatthour"]);
+				$("#tag3").html(jsonData["price"]);
+				$("#tag4").html(jsonData["time"]);
+				$("#tag5").html(jsonData["40"]);
+				$("#tag6").html(jsonData["60"]);
+				$("#tag7").html(jsonData["drill"]);
+				$("#tag8").html(jsonData["lightperc"]);
+				$("#tag9").html(jsonData["hairdryerperc"]);
+			}
+		</script>
+		<script   src="https://code.jquery.com/jquery-3.2.1.js"
+		  	integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  			crossorigin="anonymous">
+		</script>
+		<script type="text/javascript">
+			window.setInterval(function()	{
+				$.ajax({url: "http://localhost:5000",
+						type: "GET",
+						dataType: "jsonp",success:function(result){dealWithData(result);}});}, 500);
+</body></html>
